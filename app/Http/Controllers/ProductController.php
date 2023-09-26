@@ -16,42 +16,105 @@ class ProductController extends Controller
     }
 
    
-
     public function store(Request $request)
-    {
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'product-name' => 'required|string|max:255',
-            'product-category' => 'required|string|max:255',
-            'product-description' => 'required|string',
-            'product-price' => 'required|numeric',
-            'product-price-discount' => 'nullable|numeric',
-            'product-images.*' => 'image|max:2048', // Max file size: 2MB
-        ]);
+{
+    // Validate the incoming request data
+    $validatedData = $request->validate([
+        'product-name' => 'required|string|max:255',
+        'product-category' => 'required|string|max:255',
+        'product-description' => 'required|string',
+        'product-price' => 'required|numeric',
+        'product-price-discount' => 'nullable|numeric',
+        'product-images.*' => 'image|max:2048', // Max file size: 2MB
+        'product-images1.*' => 'image|max:2048',
+        'product-images2.*' => 'image|max:2048',
+        'product-images3.*' => 'image|max:2048',
+        'product-images4.*' => 'image|max:2048',
+        'product-images5.*' => 'image|max:2048',
+    ]);
 
-        // Process the uploaded files and store them
-        $imagePaths = [];
-        if ($request->hasFile('product-images')) {
-            foreach ($request->file('product-images') as $image) {
-                $imageName = time() . '-' . $image->getClientOriginalName();
-                $image->move(public_path('uploads'), $imageName);
-                $imagePaths[] = 'uploads/' . $imageName;
-            }
+    // Process the uploaded files and store them
+    $imagePaths = [];
+    $imagePaths1 = [];
+    $imagePaths2 = [];
+    $imagePaths3 = [];
+    $imagePaths4 = [];
+    $imagePaths5 = [];
+
+    // Process and store main product image
+    if ($request->hasFile('product-images')) {
+        foreach ($request->file('product-images') as $image) {
+            $imageName = time() . '-' . $image->getClientOriginalName();
+            $image->move(public_path('uploads'), $imageName);
+            $imagePaths[] = 'uploads/' . $imageName;
         }
-
-        $product = new Product([
-            'name' => $validatedData['product-name'],
-            'category' => $validatedData['product-category'],
-            'description' => $validatedData['product-description'],
-            'price' => $validatedData['product-price'],
-            'price_discount' => $validatedData['product-price-discount'],
-            'images' => json_encode($imagePaths), // Store image paths in JSON format
-        ]);
-        $product->save();
-
-        // Redirect to a success page or return a success response
-        return redirect()->route('product.upload')->with('success', 'Product uploaded successfully!');
     }
+
+    // Process and store additional images
+    // You can repeat this block for each additional image input
+    if ($request->hasFile('product-images1')) {
+        foreach ($request->file('product-images1') as $image) {
+            $imageName = time() . '-' . $image->getClientOriginalName();
+            $image->move(public_path('uploads'), $imageName);
+            $imagePaths1[] = 'uploads/' . $imageName;
+        }
+    }
+
+    if ($request->hasFile('product-images2')) {
+        foreach ($request->file('product-images2') as $image) {
+            $imageName = time() . '-' . $image->getClientOriginalName();
+            $image->move(public_path('uploads'), $imageName);
+            $imagePaths2[] = 'uploads/' . $imageName;
+        }
+    }
+
+
+    if ($request->hasFile('product-images3')) {
+        foreach ($request->file('product-images3') as $image) {
+            $imageName = time() . '-' . $image->getClientOriginalName();
+            $image->move(public_path('uploads'), $imageName);
+            $imagePaths3[] = 'uploads/' . $imageName;
+        }
+    }
+
+    if ($request->hasFile('product-images4')) {
+        foreach ($request->file('product-images4') as $image) {
+            $imageName = time() . '-' . $image->getClientOriginalName();
+            $image->move(public_path('uploads'), $imageName);
+            $imagePaths4[] = 'uploads/' . $imageName;
+        }
+    }
+
+    if ($request->hasFile('product-images5')) {
+        foreach ($request->file('product-images5') as $image) {
+            $imageName = time() . '-' . $image->getClientOriginalName();
+            $image->move(public_path('uploads'), $imageName);
+            $imagePaths5[] = 'uploads/' . $imageName;
+        }
+    }
+
+    // Create a new Product instance with image paths
+    $product = new Product([
+        'name' => $validatedData['product-name'],
+        'category' => $validatedData['product-category'],
+        'description' => $validatedData['product-description'],
+        'price' => $validatedData['product-price'],
+        'price_discount' => $validatedData['product-price-discount'],
+        'images' => json_encode($imagePaths),  // Store main product image
+        'images1' => json_encode($imagePaths1), // Store additional images
+        'images2' => json_encode($imagePaths2), // Store additional images
+        'images3' => json_encode($imagePaths3), // Store additional images
+        'images4' => json_encode($imagePaths4), // Store additional images
+        'images5' => json_encode($imagePaths5), // Store additional images
+        // Repeat for other image columns (images2, images3, etc.)
+    ]);
+    $product->save();
+
+    // Redirect to a success page or return a success response
+    return redirect()->route('product.upload')->with('success', 'Product uploaded successfully!');
+}
+
+   
 
     public function showProducts()
     {

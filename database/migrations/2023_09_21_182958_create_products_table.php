@@ -20,7 +20,12 @@ return new class extends Migration
                 $table->text('description');
                 $table->decimal('price', 10, 2);
                 $table->decimal('price_discount', 10, 2)->nullable();
-                $table->json('images');
+                $table->json('images');       // Main product image
+                $table->json('images1')->nullable();     // Additional images
+                $table->json('images2')->nullable();
+                $table->json('images3')->nullable();
+                $table->json('images4')->nullable();
+                $table->json('images5')->nullable();
                 $table->timestamps();
             });
         }

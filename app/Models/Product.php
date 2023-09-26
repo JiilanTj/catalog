@@ -17,6 +17,11 @@ class Product extends Model
         'price',
         'price_discount',
         'images',
+        'images1',
+        'images2',
+        'images3',
+        'images4',
+        'images5',
     ];
 
 

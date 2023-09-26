@@ -49,12 +49,22 @@
                             </label>
                             <input type="number" name="product-price-discount" id="product-price-discount" class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
                         </div>
-
                         <div class="mb-4">
                             <label for="product-images" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Gambar Produk (up to 5)
+                                Gambar utama produk
                             </label>
                             <input type="file" name="product-images[]" id="product-images" accept="image/*" multiple class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="product-images2" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            Gambar Produk (up to 5)
+                            </label>
+                            <input type="file" name="product-images1[]" id="product-images1" accept="image/*" multiple class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
+                            <input type="file" name="product-images2[]" id="product-images2" accept="image/*" multiple class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
+                            <input type="file" name="product-images3[]" id="product-images3" accept="image/*" multiple class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
+                            <input type="file" name="product-images4[]" id="product-images4" accept="image/*" multiple class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
+                            <input type="file" name="product-images5[]" id="product-images5" accept="image/*" multiple class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
                         </div>
 
                         <div id="image-preview" class="mt-2 flex flex-wrap"></div>
