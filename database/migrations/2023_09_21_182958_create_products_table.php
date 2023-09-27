@@ -17,6 +17,7 @@ return new class extends Migration
                 $table->id();
                 $table->string('name');
                 $table->string('category');
+                $table->string('sub_category');
                 $table->text('description');
                 $table->decimal('price', 10, 2);
                 $table->decimal('price_discount', 10, 2)->nullable();

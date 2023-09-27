@@ -34,6 +34,10 @@
                         {{ __('Hapus Kategori') }}
                     </a>
 
+                    <a href="{{ route('add-subcategory') }}" class="bg-white text-gray-800 dark:text-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 font-bold py-2 px-4 rounded">
+                        {{ __('Add sub Kategori') }}
+                    </a>
+
                     <!-- Add more buttons for other pages as needed -->
                 </div>
             </div>

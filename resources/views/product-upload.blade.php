@@ -17,17 +17,26 @@
                             </label>
                             <input type="text" name="product-name" id="product-name" class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
                         </div>
-
                         <div class="mb-4">
                         <label for="product-category" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Kategori
+                            Kategori Utama
                         </label>
                         <select name="product-category" id="product-category" class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->name }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
-                    </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="product-sub_category" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Sub Kategori
+                            </label>
+                            <select name="product-sub_category" id="product-sub_category" class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
+                                @foreach ($subcategories as $subcategory)
+                                    <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <div class="mb-4">
                             <label for="product-description" class="block text-sm font-medium text-gray-700 dark:text-gray-300">

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +46,10 @@ Route::get('/tampil-product', [ProductController::class, 'showProducts'])->name(
 Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.delete');
 Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
 Route::patch('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
-
+Route::get('/add-subcategory', [SubCategoryController::class, 'showAddForm'])->name('add-subcategory');
+Route::post('/add-subcategory', [SubCategoryController::class, 'store']);
+Route::get('/delete-subcategory', [SubCategoryController::class, 'showDeleteSubCategoryPage'])->name('delete-sub-category');
+Route::post('/delete-subcategory', [SubCategoryController::class, 'deleteSubCategory'])->name('delete-sub-category');
 
 
 require __DIR__.'/auth.php';

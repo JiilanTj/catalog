@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\SubCategory;
 
 
 class ProductController extends Controller
 {
-    public function showUploadForm()
+        public function showUploadForm()
     {
         $categories = Category::all();
-        return view('product-upload', ['categories' => $categories]);
+        $subcategories = SubCategory::all(); // Add this line to fetch subcategories
+        return view('product-upload', ['categories' => $categories, 'subcategories' => $subcategories]);
     }
+
 
    
     public function store(Request $request)
@@ -22,6 +25,7 @@ class ProductController extends Controller
     $validatedData = $request->validate([
         'product-name' => 'required|string|max:255',
         'product-category' => 'required|string|max:255',
+        'product-sub_category' => 'required|exists:sub_categories,id', // Validate that the subcategory exists in the 'sub_categories' table
         'product-description' => 'required|string',
         'product-price' => 'required|numeric',
         'product-price-discount' => 'nullable|numeric',
@@ -97,16 +101,16 @@ class ProductController extends Controller
     $product = new Product([
         'name' => $validatedData['product-name'],
         'category' => $validatedData['product-category'],
+        'sub_category' => $validatedData['product-sub_category'], // Use the subcategory ID
         'description' => $validatedData['product-description'],
         'price' => $validatedData['product-price'],
         'price_discount' => $validatedData['product-price-discount'],
-        'images' => json_encode($imagePaths),  // Store main product image
-        'images1' => json_encode($imagePaths1), // Store additional images
-        'images2' => json_encode($imagePaths2), // Store additional images
-        'images3' => json_encode($imagePaths3), // Store additional images
-        'images4' => json_encode($imagePaths4), // Store additional images
-        'images5' => json_encode($imagePaths5), // Store additional images
-        // Repeat for other image columns (images2, images3, etc.)
+        'images' => json_encode($imagePaths),
+        'images1' => json_encode($imagePaths1),
+        'images2' => json_encode($imagePaths2),
+        'images3' => json_encode($imagePaths3),
+        'images4' => json_encode($imagePaths4),
+        'images5' => json_encode($imagePaths5),
     ]);
     $product->save();
 
