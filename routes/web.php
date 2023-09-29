@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\HomepageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,7 @@ use App\Http\Controllers\SubCategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomepageController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -45,7 +44,7 @@ Route::get('/add-subcategory', [SubCategoryController::class, 'showAddForm'])->n
 Route::post('/add-subcategory', [SubCategoryController::class, 'store']);
 Route::get('/delete-subcategory', [SubCategoryController::class, 'showDeleteSubCategoryPage'])->name('delete-sub-category');
 Route::post('/delete-subcategory', [SubCategoryController::class, 'deleteSubCategory'])->name('delete-sub-category');
-Route::get('/welcome', [ProductController::class, 'showProductsTwo'])->name('welcome');
+
 
 
 

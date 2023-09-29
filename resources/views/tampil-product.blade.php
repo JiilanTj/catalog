@@ -10,7 +10,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                 <h1 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">{{ __("Daftar Produk") }}</h1>
 
-                @if(count($products) > 0)
+                
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         @foreach($products as $product)
                         <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden">
@@ -40,9 +40,7 @@
                         </div>
                         @endforeach
                     </div>
-                @else
-                    <p class="text-gray-500 dark:text-gray-400">{{ __('Tidak ada produk yang tersedia.') }}</p>
-                @endif
+                
             </div>
         </div>
     </div>
