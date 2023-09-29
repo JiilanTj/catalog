@@ -129,6 +129,16 @@ class ProductController extends Controller
         return view('tampil-product', compact('products'));
     }
 
+    public function showProductsTwo()
+    {
+        // Retrieve products from the database
+        $products = Product::all(); // You can modify this to retrieve products as needed
+
+        // Pass the products data to the view
+        return view('welcome', compact('products'));
+    }
+
+
     public function destroy($id)
     {
         // Find and delete the product by its ID

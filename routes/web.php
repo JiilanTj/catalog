@@ -31,13 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Display the upload form
 Route::get('/product-upload', [ProductController::class, 'showUploadForm'])->name('product.upload');
-
-// Handle the form submission
 Route::post('/product-upload', [ProductController::class, 'store']);
-
-
 Route::get('/add-category', [CategoryController::class, 'showAddForm'])->name('add-category');
 Route::post('/add-category', [CategoryController::class, 'store']);
 Route::get('/delete-category', [CategoryController::class, 'showDeleteCategoryPage'])->name('delete-category');
@@ -50,6 +45,8 @@ Route::get('/add-subcategory', [SubCategoryController::class, 'showAddForm'])->n
 Route::post('/add-subcategory', [SubCategoryController::class, 'store']);
 Route::get('/delete-subcategory', [SubCategoryController::class, 'showDeleteSubCategoryPage'])->name('delete-sub-category');
 Route::post('/delete-subcategory', [SubCategoryController::class, 'deleteSubCategory'])->name('delete-sub-category');
+Route::get('/welcome', [ProductController::class, 'showProductsTwo'])->name('welcome');
+
 
 
 require __DIR__.'/auth.php';
