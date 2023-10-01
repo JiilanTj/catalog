@@ -185,7 +185,11 @@ class ProductController extends Controller
         return redirect()->route('tampil-product')->with('success', 'Produk berhasil diperbarui');
     }
 
-
+    public function getSubCategories($categoryId)
+        {
+            $subCategories = SubCategory::where('category_id', $categoryId)->get();
+            return response()->json($subCategories);
+        }
 
     
     

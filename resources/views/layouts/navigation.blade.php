@@ -31,6 +31,10 @@
                     <x-nav-link :href="route('delete-category')" :active="request()->routeIs('delete-category')">
                     {{ __('Hapus Kategori') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('add-subcategory')" :active="request()->routeIs('delete-category')">
+                    {{ __('Tambah Sub Kategori') }}
+                    </x-nav-link>
                 </div>
 
                 

@@ -44,6 +44,7 @@ Route::get('/add-subcategory', [SubCategoryController::class, 'showAddForm'])->n
 Route::post('/add-subcategory', [SubCategoryController::class, 'store']);
 Route::get('/delete-subcategory', [SubCategoryController::class, 'showDeleteSubCategoryPage'])->name('delete-sub-category');
 Route::post('/delete-subcategory', [SubCategoryController::class, 'deleteSubCategory'])->name('delete-sub-category');
+Route::get('/get-subcategories/{category}', [ProductController::class, 'getSubCategories']);
 
 
 

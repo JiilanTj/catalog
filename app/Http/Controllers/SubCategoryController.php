@@ -4,27 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SubCategory;
+use App\Models\Category;
 
 
 class SubCategoryController extends Controller
 {
     public function showAddForm()
-{
-    return view('add-subcategory');
-}
+    {
+        $categories = Category::all();
+        return view('add-subcategory', ['categories' => $categories]);
+    }
 
-public function store(Request $request)
+    public function store(Request $request)
 {
-    $request->validate([
-        'name' => 'required|unique:categories|max:255',
+    $this->validate($request, [
+        'name' => 'required',
+        'category_id' => 'required', // Pastikan category_id terisi
     ]);
 
     SubCategory::create([
         'name' => $request->input('name'),
+        'category_id' => $request->input('category_id'),
     ]);
 
-    return redirect()->route('product.upload')->with('success', 'SubCategory added successfully.');
+    return redirect()->route('product.upload')
+        ->with('success', 'Sub Category created successfully.');
 }
+
 
 public function showDeleteSubCategoryPage()
 {
