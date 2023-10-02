@@ -22,12 +22,18 @@
                     </div>
                     <div class="mb-4">
                         <label for="product-category" class="block text-gray-700 text-sm font-bold mb-2">Kategori Produk:</label>
-                        <select name="product-category" id="product-category" class="border rounded w-full py-2 px-3">
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->name }}" {{ $product->category == $category->name ? 'selected' : '' }}>{{ $category->name }}</option>
-                            @endforeach
-                        </select>
+                        <select name="product-category" id="product-category" class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
+    @foreach ($categories as $category)
+        <option value="{{ $category->id }}" @if ($product->category_id == $category->id) selected @endif>{{ $category->name }}</option>
+    @endforeach
+</select>
                     </div>
+                    <h1>{{$product->sub_category_id}}</h1>
+                    <select name="product-sub_category" id="product-sub_category" class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
+    @foreach ($subcategories as $subcategory)
+        <option value="{{ $subcategory->id }}" @if ($product->sub_category_id == $subcategory->id) selected @endif>{{ $subcategory->name }}</option>
+    @endforeach
+</select>
                     <div class="mb-4">
                         <label for="product-description" class="block text-gray-700 text-sm font-bold mb-2">Nama description:</label>
                         <input type="text" name="product-description" id="product-description" value="{{ $product->description }}" class="border rounded w-full py-2 px-3">

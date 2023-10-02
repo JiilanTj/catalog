@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/product-upload', [ProductController::class, 'showUploadForm'])->name('product.upload');
 Route::post('/product-upload', [ProductController::class, 'store']);
+Route::get('/get-subcategories-by-category', [ProductControllerName::class, 'getSubCategoriesByCategory']);
 Route::get('/add-category', [CategoryController::class, 'showAddForm'])->name('add-category');
 Route::post('/add-category', [CategoryController::class, 'store']);
 Route::get('/delete-category', [CategoryController::class, 'showDeleteCategoryPage'])->name('delete-category');

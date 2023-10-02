@@ -17,6 +17,13 @@ class ProductController extends Controller
         return view('product-upload', ['categories' => $categories, 'subcategories' => $subcategories]);
     }
 
+    public function getSubCategoriesByCategory(Request $request)
+{
+    $category_id = $request->input('category_id');
+    $subcategories = SubCategory::where('category_id', $category_id)->get();
+    
+    return response()->json($subcategories);
+}
 
    
     public function store(Request $request)
@@ -100,8 +107,8 @@ class ProductController extends Controller
     // Create a new Product instance with image paths
     $product = new Product([
         'name' => $validatedData['product-name'],
-        'category' => $validatedData['product-category'],
-        'sub_category' => $validatedData['product-sub_category'], // Use the subcategory ID
+        'category_id' => $validatedData['product-category'],
+        'sub_category_id' => $validatedData['product-sub_category'], // Use the subcategory ID
         'description' => $validatedData['product-description'],
         'price' => $validatedData['product-price'],
         'price_discount' => $validatedData['product-price-discount'],
@@ -151,10 +158,11 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $product = Product::findOrFail($id);
-        $categories = Category::all();
-
-        return view('product-edit', compact('product', 'categories'));
+        $product = Product::findOrFail($id); // Mengambil data produk yang akan diedit
+    $categories = Category::all();
+    $subcategories = SubCategory::all(); // Mengambil subkategori berdasarkan kategori produk
+    
+    return view('product-edit', compact('product', 'categories', 'subcategories'));
     }
 
     public function update(Request $request, $id)
@@ -165,6 +173,7 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             'product-name' => 'required|string|max:255',
             'product-category' => 'required|string|max:255',
+            'product-sub_category' => 'required|exists:sub_categories,id',
             'product-description' => 'required|string|max:255',
             'product-price' => 'required|string|max:255',
             'product-price_discount' => 'required|string|max:255',
@@ -174,7 +183,8 @@ class ProductController extends Controller
         // Update data produk
         $product->update([
             'name' => $validatedData['product-name'],
-            'category' => $validatedData['product-category'],
+            'category_id' => $validatedData['product-category'],
+        'sub_category_id' => $validatedData['product-sub_category'],
             'description' => $validatedData['product-description'],
             'price' => $validatedData['product-price'],
             'price_discount' => $validatedData['product-price_discount'],
