@@ -23,6 +23,7 @@ class Product extends Model
         'images3',
         'images4',
         'images5',
+        'gender',
     ];
 
 

@@ -18,6 +18,16 @@
                             <input type="text" name="product-name" id="product-name" class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
                         </div>
                         <div class="mb-4">
+                            <label for="gender" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Sub Kategori
+                            </label>
+                            <select name="gender" id="gender" class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
+                            <option value="male">Male (Laki-laki)</option>
+  <option value="female">Female (Perempuan)</option>
+  <option value="other">Other (Lainnya)</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
                             <label for="product-category" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                 Kategori Utama
                             </label>

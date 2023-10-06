@@ -21,6 +21,15 @@
                         <input type="text" name="product-name" id="product-name" value="{{ $product->name }}" class="border rounded w-full py-2 px-3">
                     </div>
                     <div class="mb-4">
+    <label for="jenis-kelamin" class="block text-gray-700 text-sm font-bold mb-2">Jenis Kelamin:</label>
+    <select name="jenis-kelamin" id="jenis-kelamin" class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
+        <option value="male" @if ($product->gender === 'male') selected @endif>Laki-laki</option>
+        <option value="female" @if ($product->gender === 'female') selected @endif>Perempuan</option>
+        <option value="other" @if ($product->gender === 'other') selected @endif>Lainnya</option>
+    </select>
+</div>
+
+                    <div class="mb-4">
                         <label for="product-category" class="block text-gray-700 text-sm font-bold mb-2">Kategori Produk:</label>
                         <select name="product-category" id="product-category" class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
     @foreach ($categories as $category)
@@ -28,7 +37,7 @@
     @endforeach
 </select>
                     </div>
-                    <h1>{{$product->sub_category_id}}</h1>
+                    <label for="product-sub_category" class="block text-gray-700 text-sm font-bold mb-2">sub-Kategori Produk:</label>
                     <select name="product-sub_category" id="product-sub_category" class="mt-1 p-2 w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-indigo-900 dark:text-gray-100">
     @foreach ($subcategories as $subcategory)
         <option value="{{ $subcategory->id }}" @if ($product->sub_category_id == $subcategory->id) selected @endif>{{ $subcategory->name }}</option>

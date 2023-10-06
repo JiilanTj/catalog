@@ -39,9 +39,9 @@ public function deleteCategory(Request $request)
 
     if ($category) {
         $category->delete();
-        return redirect()->back()->with('success', 'Category deleted successfully');
+        return redirect()->back()->with('success', 'Kategori berhasil dihapus');
     } else {
-        return redirect()->back()->with('error', 'Category not found');
+        return redirect()->back()->with('error', 'Kategori tidak ditemukan');
     }
 }
 

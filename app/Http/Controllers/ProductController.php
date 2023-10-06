@@ -31,6 +31,7 @@ class ProductController extends Controller
     // Validate the incoming request data
     $validatedData = $request->validate([
         'product-name' => 'required|string|max:255',
+        'gender' => 'required|string|max:255',
         'product-category' => 'required|string|max:255',
         'product-sub_category' => 'required|exists:sub_categories,id', // Validate that the subcategory exists in the 'sub_categories' table
         'product-description' => 'required|string',
@@ -107,6 +108,7 @@ class ProductController extends Controller
     // Create a new Product instance with image paths
     $product = new Product([
         'name' => $validatedData['product-name'],
+        'gender' => $validatedData['gender'],
         'category_id' => $validatedData['product-category'],
         'sub_category_id' => $validatedData['product-sub_category'], // Use the subcategory ID
         'description' => $validatedData['product-description'],
@@ -172,6 +174,7 @@ class ProductController extends Controller
         // Validasi data yang diubah
         $validatedData = $request->validate([
             'product-name' => 'required|string|max:255',
+            'gender' => 'required|string|max:255',
             'product-category' => 'required|string|max:255',
             'product-sub_category' => 'required|exists:sub_categories,id',
             'product-description' => 'required|string|max:255',
@@ -183,6 +186,7 @@ class ProductController extends Controller
         // Update data produk
         $product->update([
             'name' => $validatedData['product-name'],
+            'gender' => $validatedData['gender'],
             'category_id' => $validatedData['product-category'],
         'sub_category_id' => $validatedData['product-sub_category'],
             'description' => $validatedData['product-description'],

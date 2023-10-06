@@ -27,6 +27,7 @@ return new class extends Migration
         $table->json('images3')->nullable();
         $table->json('images4')->nullable();
         $table->json('images5')->nullable();
+        $table->string('gender');
         $table->timestamps();
 
         // Tambahkan constraint foreign key ke tabel categories
